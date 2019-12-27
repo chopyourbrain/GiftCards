@@ -26,6 +26,39 @@
                   "currency": "USD",
                   "description": "Buy everything from Amazon. It's great.",
                   "redeem_url": "http://www.amazon.com"
+                },
+                {
+                  "id": 3,
+                  "featured": false,
+                  "title": "${'$'}30 Amazon.com",
+                  "credits": 16000,
+                  "image_url": "http://g-ec2.images-amazon.com/images/G/01/social/api-share/amazon_logo_500500.png",
+                  "codes_count": 7,
+                  "currency": "USD",
+                  "description": "Buy everything from Amazon. It's great.",
+                  "redeem_url": "http://www.amazon.com"
+                },
+                {
+                  "id": 4,
+                  "featured": false,
+                  "title": "${'$'}40 Amazon.com",
+                  "credits": 16500,
+                  "image_url": "http://g-ec2.images-amazon.com/images/G/01/social/api-share/amazon_logo_500500.png",
+                  "codes_count": 9,
+                  "currency": "USD",
+                  "description": "Buy everything from Amazon. It's great.",
+                  "redeem_url": "http://www.amazon.com"
+                },
+                {
+                  "id": 5,
+                  "featured": false,
+                  "title": "${'$'}60 Amazon.com",
+                  "credits": 19000,
+                  "image_url": "http://g-ec2.images-amazon.com/images/G/01/social/api-share/amazon_logo_500500.png",
+                  "codes_count": 12,
+                  "currency": "USD",
+                  "description": "Buy everything from Amazon. It's great.",
+                  "redeem_url": "http://www.amazon.com"
                 }
             ]
         },
