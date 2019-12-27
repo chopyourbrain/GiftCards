@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface MainService {
 
-    @GET(".")
+    @GET("db")
     fun getCards(): Single<MainDTO?>
 }

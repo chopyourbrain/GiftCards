@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 object TransportProvider {
 
     fun createInstance(): Retrofit {
-        val URL = "https://imya.bslab.ru/"
+        val URL = "https://my-json-server.typicode.com/chopyourbrain/GiftCards/"
         val builder = OkHttpClient.Builder()
             .connectTimeout(5, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
