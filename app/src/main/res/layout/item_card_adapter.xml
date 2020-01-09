@@ -40,7 +40,7 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="-0.04"
                 android:lineSpacingExtra="4sp"
-                android:textColor="#2c343a"
+                android:textColor="@color/colorCardBackground"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:text="$25.00" />
@@ -64,7 +64,7 @@
                 android:gravity="end"
                 android:letterSpacing="-0.04"
                 android:lineSpacingExtra="4sp"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:text="4,600" />
@@ -78,7 +78,7 @@
                 android:lineSpacingExtra="5sp"
                 android:layout_gravity="bottom"
                 android:text="@string/coins"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="normal" />
 

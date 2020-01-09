@@ -1,9 +1,13 @@
 package com.example.giftcards.domain.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+@Entity(tableName = "company_table")
 class CompanyDTO : Serializable {
+    @PrimaryKey
     @SerializedName("id")
     var id: Long? = null
     @SerializedName("title")
