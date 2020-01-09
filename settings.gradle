@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':core-utils', ':core-network-api', ':core-network-impl'
 rootProject.name='GiftCards'

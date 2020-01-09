@@ -38,11 +38,6 @@ android {
     }
 }
 
-def retrofitVersion = '2.4.0'
-def room_version = "2.2.3"
-def dagger_version = "2.24"
-def glide_version = "4.9.0"
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -61,28 +56,28 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-scalars:${versions.retrofitVersion}"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.0.1'
 
-    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-runtime:${versions.roomVersion}"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
+    kapt "androidx.room:room-compiler:${versions.roomVersion}"
+    implementation "androidx.room:room-rxjava2:${versions.roomVersion}"
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
 
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    implementation "com.google.dagger:dagger:${versions.daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${versions.daggerVersion}"
+    implementation "com.google.dagger:dagger-android:${versions.daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${versions.daggerVersion}"
+    kapt "com.google.dagger:dagger-android-processor:${versions.daggerVersion}"
 
-    implementation "com.github.bumptech.glide:glide:$glide_version"
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.github.bumptech.glide:glide:${versions.glideVersion}"
+    kapt "com.github.bumptech.glide:compiler:${versions.glideVersion}"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-4'
 
