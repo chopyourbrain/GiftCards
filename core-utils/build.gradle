@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -33,4 +34,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofitVersion}"
+
+    implementation "androidx.room:room-runtime:${versions.roomVersion}"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.room:room-rxjava2:${versions.roomVersion}"
+
+    implementation "com.github.bumptech.glide:glide:${versions.glideVersion}"
+    kapt "com.github.bumptech.glide:compiler:${versions.glideVersion}"
+
 }

@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -39,6 +38,13 @@ android {
 }
 
 dependencies {
+    implementation project(':core-utils')
+    implementation project(':core-network-api')
+    implementation project(':core-network-impl')
+    implementation project(':core-db-api')
+    implementation project(':core-db-impl')
+    implementation project(':feature-giftcards-api')
+    implementation project(':feature-giftcards-impl')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -62,10 +68,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:${versions.retrofitVersion}"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.0.1'
 
-    implementation "androidx.room:room-runtime:${versions.roomVersion}"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:${versions.roomVersion}"
-    implementation "androidx.room:room-rxjava2:${versions.roomVersion}"
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
@@ -76,8 +79,6 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${versions.daggerVersion}"
     kapt "com.google.dagger:dagger-android-processor:${versions.daggerVersion}"
 
-    implementation "com.github.bumptech.glide:glide:${versions.glideVersion}"
-    kapt "com.github.bumptech.glide:compiler:${versions.glideVersion}"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-4'
 

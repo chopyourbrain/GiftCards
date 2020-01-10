@@ -1,6 +1,9 @@
 package com.example.core_network_impl.di
 
+import com.example.core_network_api.data.HttpClientApi
+import com.example.core_network_impl.data.HttpClientImpl
 import com.google.gson.GsonBuilder
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -12,7 +15,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class NetworkModule {
+abstract class NetworkModule {
 
     @Singleton
     @Provides
@@ -31,4 +34,8 @@ class NetworkModule {
             .addConverterFactory(ScalarsConverterFactory.create())
             .build()
     }
+
+    @Binds
+    abstract fun provideHttpClient(httpClientImpl: HttpClientImpl): HttpClientApi
+
 }
