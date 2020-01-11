@@ -33,7 +33,11 @@ class MainAdapter(private val list: List<com.example.core_utils.domain.model.Com
         fun bind(companyDTO: com.example.core_utils.domain.model.CompanyDTO) {
             title.text = companyDTO.title
             cardRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            cardRecycler.adapter = CardAdapter(companyDTO.gift_cards.orEmpty().filterNotNull(), navigateInterface)
+            cardRecycler.adapter =
+                CardAdapter(
+                    companyDTO.gift_cards.orEmpty().filterNotNull(),
+                    navigateInterface
+                )
         }
     }
 }

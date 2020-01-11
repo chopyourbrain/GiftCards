@@ -45,7 +45,13 @@ class FragmentMain : DaggerFragment(), NavigateInterface {
                     hideProgressDialog()
                     recycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                     recycler.adapter =
-                        context?.let { it1 -> MainAdapter(it.data.filterNotNull(), it1, this) }
+                        context?.let { it1 ->
+                            MainAdapter(
+                                it.data.filterNotNull(),
+                                it1,
+                                this
+                            )
+                        }
                     swipe_to_refresh.isRefreshing = false
                 }
                 is com.example.core_utils.domain.model.Outcome.Failure -> {

@@ -17,22 +17,26 @@ import javax.inject.Singleton
 @Module
 abstract class NetworkModule {
 
-    @Singleton
-    @Provides
-    fun provideTransportProvider(): Retrofit {
-        val baseUrl = "https://my-json-server.typicode.com/chopyourbrain/GiftCards/"
-        val builder = OkHttpClient.Builder()
-            .connectTimeout(5, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
+    @Module
+    companion object {
+        @Singleton
+        @Provides
+        @JvmStatic
+        fun provideTransportProvider(): Retrofit {
+            val baseUrl = "https://my-json-server.typicode.com/chopyourbrain/GiftCards/"
+            val builder = OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
 
-        return Retrofit.Builder()
-            .client(builder.build())
-            .baseUrl(baseUrl)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()))
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .build()
+            return Retrofit.Builder()
+                .client(builder.build())
+                .baseUrl(baseUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()))
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build()
+        }
     }
 
     @Binds

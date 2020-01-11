@@ -3,6 +3,7 @@ package com.example.giftcards.di.component
 import android.content.Context
 import com.example.core_db_impl.di.DatabaseModule
 import com.example.giftcards.App
+import com.example.giftcards.di.module.ActivityInjectorModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -14,8 +15,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
-        AndroidSupportInjectionModule::class,
-        DatabaseModule::class
+        AndroidSupportInjectionModule::class
+//        ActivityInjectorModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {
