@@ -1,11 +1,8 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
-
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -43,8 +40,8 @@ dependencies {
     implementation project(':core-network-impl')
     implementation project(':core-db-api')
     implementation project(':core-db-impl')
-    implementation project(':feature-giftcards-api')
-    implementation project(':feature-giftcards-impl')
+//    implementation project(':feature-giftcards-api')
+//    implementation project(':feature-giftcards-impl')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

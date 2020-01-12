@@ -1,3 +1,0 @@
-package com.example.feature_giftcards_impl.presentation.fragments.detail
-
-interface FragmentDetailViewModel

@@ -1,2 +1,2 @@
-include ':app', ':core-utils', ':core-network-api', ':core-network-impl', ':feature-giftcards-api', ':feature-giftcards-impl', ':core-db-api', ':core-db-impl'
+include ':app', ':core-utils', ':core-network-api', ':core-network-impl', ':core-db-api', ':core-db-impl'
 rootProject.name='GiftCards'

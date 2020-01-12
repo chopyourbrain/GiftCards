@@ -5,5 +5,5 @@ import java.io.Serializable
 
 class MainDTO : Serializable {
     @SerializedName("providers")
-    var providers: List<com.example.core_utils.domain.model.CompanyDTO?>? = null
+    var providers: List<CompanyDTO?>? = null
 }
