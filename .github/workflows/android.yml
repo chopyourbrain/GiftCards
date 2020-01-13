@@ -16,11 +16,11 @@ jobs:
     - name: update
       run: sudo chmod +x ./gradlew
     - name: Build with Gradle 
-      run: ./gradlew assembleRelease
+      run: ./gradlew assembleDebug
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         # Artifact name
-        name: app-release-unsigned.apk
+        name: app-debug.apk
     # Directory containing files to upload
-        path: app/build/outputs/apk/release/
+        path: app/build/outputs/apk/debug/
