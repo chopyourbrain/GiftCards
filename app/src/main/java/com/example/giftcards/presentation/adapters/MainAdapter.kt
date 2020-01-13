@@ -9,9 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core_utils.domain.model.CompanyDTO
 import com.example.giftcards.R
+import com.example.giftcards.presentation.fragments.main.FragmentMain
 import com.example.giftcards.presentation.fragments.main.NavigateInterface
 
-class MainAdapter(private val list: List<CompanyDTO>, val context: Context, private val navigateInterface: NavigateInterface) :
+class MainAdapter(
+    private val list: List<CompanyDTO>,
+    val context: Context,
+    private val navigateInterface: NavigateInterface
+) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = list.size
@@ -30,15 +35,32 @@ class MainAdapter(private val list: List<CompanyDTO>, val context: Context, priv
 
         private val title: TextView = itemView.findViewById(R.id.title)
         private val cardRecycler: RecyclerView = itemView.findViewById(R.id.card_recycler)
+        private lateinit var layoutManager: LinearLayoutManager
+        private var index = -1
+        private var offset = -1
 
         fun bind(companyDTO: CompanyDTO) {
             title.text = companyDTO.title
-            cardRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            cardRecycler.layoutManager = layoutManager
             cardRecycler.adapter =
                 CardAdapter(
                     companyDTO.gift_cards.orEmpty().filterNotNull(),
                     navigateInterface
                 )
+        }
+
+        fun savePosition(): FragmentMain.RecyclerPosition {
+            index = layoutManager.findFirstVisibleItemPosition()
+            offset =
+                if (cardRecycler.getChildAt(0) == null) 0 else cardRecycler.getChildAt(0).left - cardRecycler.paddingStart
+            return FragmentMain.RecyclerPosition(index, offset)
+        }
+
+        fun restorePosition(position: FragmentMain.RecyclerPosition?) {
+            position?.let {
+                layoutManager.scrollToPositionWithOffset(it.index, it.offset)
+            }
         }
     }
 }

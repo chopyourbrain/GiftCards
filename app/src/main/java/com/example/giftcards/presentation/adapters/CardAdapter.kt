@@ -34,7 +34,7 @@ class CardAdapter(private val list: List<CardDTO>, private val navigateInterface
         private val credits: TextView = itemView.findViewById(R.id.credits)
         private val card: CardView = itemView.findViewById(R.id.card)
 
-        fun bind(cardDTO: com.example.core_utils.domain.model.CardDTO) {
+        fun bind(cardDTO: CardDTO) {
             val codesText = "${"$"}${cardDTO.codes_count.toString()}.00"
             codesCount.text = codesText
             credits.text = cardDTO.credits.toString()
