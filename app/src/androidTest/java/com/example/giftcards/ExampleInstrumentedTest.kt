@@ -1,12 +1,12 @@
 package com.example.giftcards
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.rule.ActivityTestRule
+import com.example.giftcards.presentation.activity.main.MainActivity
+import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -14,11 +14,17 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class ExampleInstrumentedTest : TestCase() {
+
+    @get:Rule
+    val activityTestRule = ActivityTestRule(MainActivity::class.java, true, true)
+
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.giftcards", appContext.packageName)
+    fun useAppContext() = before { }.after { }.run {
+        step("Step 1. Screen") {
+
+        }
     }
+
+
 }
