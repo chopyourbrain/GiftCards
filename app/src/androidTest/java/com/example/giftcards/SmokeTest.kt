@@ -14,17 +14,29 @@ import org.junit.runner.RunWith
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest : TestCase() {
+class SmokeTest : TestCase() {
 
     @get:Rule
     val activityTestRule = ActivityTestRule(MainActivity::class.java, true, true)
 
     @Test
-    fun useAppContext() = before { }.after { }.run {
+    fun checkCompanyTitles() = before { }.after { }.run {
         step("Step 1. Screen") {
+            MainScreen {
+                recycler {
+                    isCompletelyDisplayed()
+                    for (i in 0..2) {
+                        childAt<Company>(i) {
+                            when (i) {
+                                0 -> title.hasText("Amazon.com")
+                                1 -> title.hasText("iTunes")
+                                2 -> title.hasText("Steam")
+                            }
+                        }
+                    }
 
+                }
+            }
         }
     }
-
-
 }
