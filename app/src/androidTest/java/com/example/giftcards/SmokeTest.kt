@@ -21,7 +21,7 @@ class SmokeTest : TestCase() {
 
     @Test
     fun checkCompanyTitles() = before { }.after { }.run {
-        step("Step 1. Screen") {
+        step("Correct titles") {
             MainScreen {
                 recycler {
                     isCompletelyDisplayed()
