@@ -2,12 +2,10 @@ package com.example.core_network_impl.mock
 
 import com.example.core_utils.domain.model.MainDTO
 import com.google.gson.Gson
-import io.reactivex.Single
 
-class MockResponse {
-    companion object {
-        fun getCardResponse(): Single<MainDTO?> = Single.fromCallable {
-            Gson().fromJson<MainDTO>(
+object MockResponse {
+    fun getCardResponse(): MainDTO =
+        Gson().fromJson<MainDTO>(
             """
             {
                 "providers": [
@@ -221,7 +219,6 @@ class MockResponse {
                     }
                 ]
             }
-        """, MainDTO::class.java)
-        }
-    }
+        """, MainDTO::class.java
+        )
 }
