@@ -8,3 +8,5 @@
 6. Retrofit
 7. JUnit + Mockito
 8. Kaspresso
+
+[Download APK](https://github.com/chopyourbrain/GiftCards/suites/422239295/artifacts/1368606)
