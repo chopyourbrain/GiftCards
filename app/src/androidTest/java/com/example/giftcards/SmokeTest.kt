@@ -11,27 +11,26 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SmokeTest : TestCase() {
 
+    private val list = listOf("Amazon.com", "iTunes", "Steam")
+
     @get:Rule
     val activityTestRule = ActivityTestRule(MainActivity::class.java, true, true)
 
     @Test
-    fun checkCompanyTitles() = before { }.after { }.run {
+    fun checkCompanyTitles() = before {}.after {}.run {
         step("Correct titles") {
             MainScreen {
                 recycler {
                     isCompletelyDisplayed()
-                    for (i in 0..2) {
+                    hasSize(list.size)
+                    for (i in list.indices) {
                         childAt<Company>(i) {
-                            when (i) {
-                                0 -> title.hasText("Amazon.com")
-                                1 -> title.hasText("iTunes")
-                                2 -> title.hasText("Steam")
-                            }
+                            title.hasText(list[i])
                         }
                     }
-
                 }
             }
         }
     }
+
 }

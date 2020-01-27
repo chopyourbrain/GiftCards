@@ -35,7 +35,7 @@ class GetCardsUseCaseTest {
     }
 
     private val remoteRepositoryNegative: MainRemoteRepositoryImpl = mock {
-        on { getCardList() } doReturn Single.error { Throwable("Internet exeption") }
+        on { getCardList() } doReturn Single.error { Throwable("Internet exception") }
     }
 
     private val remoteList = listOf(CompanyDTO(), null)

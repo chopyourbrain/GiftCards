@@ -2,12 +2,10 @@ package com.example.giftcards.di.component
 
 import android.content.Context
 import com.example.core_db_api.di.CoreDBApi
-import com.example.core_db_impl.di.CoreDBComponent
-import com.example.core_db_impl.di.DatabaseModule
 import com.example.core_network_api.di.CoreNetworkApi
-import com.example.core_network_impl.di.CoreNetworkComponent
 import com.example.giftcards.App
 import com.example.giftcards.di.module.ActivityInjectorModule
+import com.example.giftcards.di.module.BindingModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -20,7 +18,8 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         AndroidSupportInjectionModule::class,
-        ActivityInjectorModule::class
+        ActivityInjectorModule::class,
+        BindingModule::class
     ], dependencies = [CoreDBApi::class, CoreNetworkApi::class]
 )
 interface AppComponent : AndroidInjector<App> {

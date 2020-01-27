@@ -15,8 +15,4 @@ class App : DaggerApplication() {
             DaggerCoreNetworkComponent.factory().create()
         )
 
-    override fun onCreate() {
-        super.onCreate()
-//        FeatureProxy.getGiftCardsFeature(this)
-    }
 }
