@@ -3,7 +3,8 @@ package com.example.giftcards.test
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.agoda.kakao.screen.Screen
-import com.example.core_utils.domain.model.CardDTO
+import com.example.giftcards.data.SmokeTestData.companyList
+import com.example.giftcards.data.SmokeTestData.firstItem
 import com.example.giftcards.presentation.activity.main.MainActivity
 import com.example.giftcards.screen.Card
 import com.example.giftcards.screen.Company
@@ -23,32 +24,20 @@ class SmokeTest :
         private const val NETWORK_ESTABLISHMENT_DELAY = 1_500L
     }
 
-    private val list = listOf("Amazon.com", "iTunes", "Steam")
-
-    private val firstItem = CardDTO()
-
     @get:Rule
     val activityTestRule = ActivityTestRule(MainActivity::class.java, true, true)
 
     @Test
-    fun smokeTest() = before {
-        firstItem.apply {
-            credits = 8500
-            codesCount = 101
-            description = "Buy everything from Amazon. It's great."
-            redeemUrl = "http://www.amazon.com"
-        }
-        device.network.enable()
-    }.after { device.network.enable() }.run {
+    fun smokeTest() = before { device.network.enable() }.after { device.network.enable() }.run {
 
         step("Check correct titles") {
             MainScreen {
                 recycler {
                     isCompletelyDisplayed()
-                    hasSize(list.size)
-                    for (i in list.indices) {
+                    hasSize(companyList.size)
+                    for (i in companyList.indices) {
                         childAt<Company>(i) {
-                            title.hasText(list[i])
+                            title.hasText(companyList[i])
                             cardRecycler {
                                 isDisplayed()
                             }
@@ -62,7 +51,7 @@ class SmokeTest :
             MainScreen {
                 recycler {
                     isCompletelyDisplayed()
-                    hasSize(list.size)
+                    hasSize(companyList.size)
                     firstChild<Company> {
                         cardRecycler {
                             firstChild<Card> {
@@ -90,7 +79,7 @@ class SmokeTest :
                     isNotRefreshing()
                 }
                 recycler {
-                    hasSize(list.size)
+                    hasSize(companyList.size)
                 }
             }
         }
