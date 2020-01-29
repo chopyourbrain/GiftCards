@@ -35,10 +35,10 @@ class CardAdapter(private val list: List<CardDTO>, private val navigateInterface
         private val card: CardView = itemView.findViewById(R.id.card)
 
         fun bind(cardDTO: CardDTO) {
-            val codesText = "${"$"}${cardDTO.codes_count.toString()}.00"
+            val codesText = "${"$"}${cardDTO.codesCount.toString()}.00"
             codesCount.text = codesText
             credits.text = cardDTO.credits.toString()
-            cardImage.setImageFromUrl(cardDTO.image_url ?: "")
+            cardImage.setImageFromUrl(cardDTO.imageUrl ?: "")
             card.transitionName = cardDTO.id.toString()
             card.setOnClickListener { navigateInterface.navigateToDetail(cardDTO, card) }
         }

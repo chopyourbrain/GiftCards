@@ -45,7 +45,7 @@ class MainAdapter(
             cardRecycler.layoutManager = layoutManager
             cardRecycler.adapter =
                 CardAdapter(
-                    companyDTO.gift_cards.orEmpty().filterNotNull(),
+                    companyDTO.giftCards.orEmpty().filterNotNull(),
                     navigateInterface
                 )
         }

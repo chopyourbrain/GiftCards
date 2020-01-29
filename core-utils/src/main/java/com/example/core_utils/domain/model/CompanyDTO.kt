@@ -13,7 +13,7 @@ class CompanyDTO : Serializable {
     @SerializedName("title")
     var title: String? = null
     @SerializedName("image_url")
-    var image_url: String? = null
+    var imageUrl: String? = null
     @SerializedName("gift_cards")
-    var gift_cards: List<com.example.core_utils.domain.model.CardDTO?>? = null
+    var giftCards: List<CardDTO?>? = null
 }

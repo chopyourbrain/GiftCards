@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.example.core_utils.util.extensions.setImageFromUrl
-import com.example.giftcards.presentation.fragments.detail.FragmentDetailArgs
 import com.example.giftcards.R
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_detail.*
@@ -36,11 +35,11 @@ class FragmentDetail : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         description.text = navArgs.cardDTO.description
-        redeem.text = navArgs.cardDTO.redeem_url
-        val codesText = "${"$"}${navArgs.cardDTO.codes_count.toString()}.00"
+        redeem.text = navArgs.cardDTO.redeemUrl
+        val codesText = "${"$"}${navArgs.cardDTO.codesCount.toString()}.00"
         codes_count.text = codesText
         credits.text = navArgs.cardDTO.credits.toString()
-        card_image.setImageFromUrl(navArgs.cardDTO.image_url ?: "")
+        card_image.setImageFromUrl(navArgs.cardDTO.imageUrl ?: "")
         card.transitionName = navArgs.cardDTO.id.toString()
     }
 }

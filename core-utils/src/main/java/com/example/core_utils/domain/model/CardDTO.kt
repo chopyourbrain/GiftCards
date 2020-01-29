@@ -5,21 +5,21 @@ import java.io.Serializable
 
 class CardDTO : Serializable {
     @SerializedName("id")
-    val id: Long? = null
+    var id: Long? = null
     @SerializedName("featured")
-    val featured: Boolean? = null
+    var featured: Boolean? = null
     @SerializedName("title")
-    val title: String? = null
+    var title: String? = null
     @SerializedName("credits")
-    val credits: Long? = null
+    var credits: Long? = null
     @SerializedName("image_url")
-    val image_url: String? = null
+    var imageUrl: String? = null
     @SerializedName("codes_count")
-    val codes_count: Int? = null
+    var codesCount: Int? = null
     @SerializedName("currency")
-    val currency: String? = null
+    var currency: String? = null
     @SerializedName("description")
-    val description: String? = null
+    var description: String? = null
     @SerializedName("redeem_url")
-    val redeem_url: String? = null
+    var redeemUrl: String? = null
 }
