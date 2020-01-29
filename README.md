@@ -1,5 +1,6 @@
 # GiftCards
 ### Sample app
+![alt text](https://github.com/chopyourbrain/GiftCards/blob/master/readme_gif/sample.gif "sample_gif")
 1. Kotlin
 2. MultiModule + Clean architecture + MVVM
 3. RxJava + RxAndroid
