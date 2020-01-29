@@ -1,4 +1,4 @@
-package com.example.giftcards
+package com.example.giftcards.screen.base
 
 import com.agoda.kakao.screen.Screen
 

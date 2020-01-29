@@ -1,7 +1,9 @@
-package com.example.giftcards
+package com.example.giftcards.screen
 
 import com.agoda.kakao.text.KTextView
+import com.example.giftcards.R
 import com.example.giftcards.presentation.fragments.detail.FragmentDetail
+import com.example.giftcards.screen.base.KScreen
 
 object DetailScreen : KScreen<DetailScreen>() {
     override val layoutId: Int? = R.layout.fragment_detail

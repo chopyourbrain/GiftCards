@@ -1,11 +1,13 @@
-package com.example.giftcards
+package com.example.giftcards.screen
 
 import android.view.View
 import com.agoda.kakao.recycler.KRecyclerItem
 import com.agoda.kakao.recycler.KRecyclerView
 import com.agoda.kakao.swiperefresh.KSwipeRefreshLayout
 import com.agoda.kakao.text.KTextView
+import com.example.giftcards.R
 import com.example.giftcards.presentation.fragments.main.FragmentMain
+import com.example.giftcards.screen.base.KScreen
 import org.hamcrest.Matcher
 
 object MainScreen : KScreen<MainScreen>() {

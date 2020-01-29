@@ -1,10 +1,14 @@
-package com.example.giftcards
+package com.example.giftcards.test
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.agoda.kakao.screen.Screen
 import com.example.core_utils.domain.model.CardDTO
 import com.example.giftcards.presentation.activity.main.MainActivity
+import com.example.giftcards.screen.Card
+import com.example.giftcards.screen.Company
+import com.example.giftcards.screen.DetailScreen
+import com.example.giftcards.screen.MainScreen
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
