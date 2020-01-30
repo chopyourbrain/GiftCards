@@ -11,6 +11,7 @@ import com.example.core_utils.domain.model.CompanyDTO
 import com.example.giftcards.R
 import com.example.giftcards.presentation.fragments.main.FragmentMain
 import com.example.giftcards.presentation.fragments.main.NavigateInterface
+import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 
 class MainAdapter(
     private val list: List<CompanyDTO>,
@@ -43,11 +44,12 @@ class MainAdapter(
             title.text = companyDTO.title
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             cardRecycler.layoutManager = layoutManager
-            cardRecycler.adapter =
+            cardRecycler.adapter = AlphaInAnimationAdapter(
                 CardAdapter(
                     companyDTO.giftCards.orEmpty().filterNotNull(),
                     navigateInterface
                 )
+            )
         }
 
         fun savePosition(): FragmentMain.RecyclerPosition {

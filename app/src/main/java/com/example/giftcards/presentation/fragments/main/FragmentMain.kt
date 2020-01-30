@@ -17,6 +17,7 @@ import com.example.core_utils.util.extensions.showError
 import com.example.giftcards.R
 import com.example.giftcards.presentation.adapters.MainAdapter
 import dagger.android.support.DaggerFragment
+import jp.wasabeef.recyclerview.animators.FadeInDownAnimator
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
@@ -56,15 +57,18 @@ class FragmentMain : DaggerFragment(),
                     hideProgressDialog()
                     recyclerViewLayoutManager =
                         LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                    recycler.layoutManager = recyclerViewLayoutManager
-                    recycler.adapter =
-                        context?.let { it1 ->
-                            MainAdapter(
-                                it.data.filterNotNull(),
-                                it1,
-                                this
-                            )
-                        }
+                    recycler.apply {
+                        layoutManager = recyclerViewLayoutManager
+                        adapter =
+                            context?.let { it1 ->
+                                MainAdapter(
+                                    it.data.filterNotNull(),
+                                    it1,
+                                    this@FragmentMain
+                                )
+                            }
+                        itemAnimator = FadeInDownAnimator()
+                    }
                     swipe_to_refresh.isRefreshing = false
                 }
                 is Outcome.Failure -> {

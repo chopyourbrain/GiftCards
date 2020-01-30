@@ -91,6 +91,8 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${versions.daggerVersion}"
     kapt "com.google.dagger:dagger-android-processor:${versions.daggerVersion}"
 
+    implementation "jp.wasabeef:recyclerview-animators:3.0.0"
+
     debugImplementation "com.squareup.leakcanary:leakcanary-android:2.0-beta-4"
 
 }
