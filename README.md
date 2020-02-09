@@ -8,7 +8,8 @@
 5. Navigation Component
 6. Room
 7. Retrofit
-8. JUnit + Mockito
-9. Kaspresso
+8. Motion Layout
+9. JUnit + Mockito
+10. Kaspresso
 
-[Download APK](https://github.com/chopyourbrain/GiftCards/suites/422239295/artifacts/1368606)
+[Download APK](https://drive.google.com/open?id=13u4Qe_EqWTL_7GXxa9uqEmGFDrzopQSa)
