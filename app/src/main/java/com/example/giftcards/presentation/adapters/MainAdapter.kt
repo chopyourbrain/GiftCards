@@ -14,18 +14,25 @@ import com.example.giftcards.presentation.fragments.main.NavigateInterface
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 
 class MainAdapter(
-    private val list: List<CompanyDTO>,
+    private var list: List<CompanyDTO>,
     val context: Context,
     private val navigateInterface: NavigateInterface
 ) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
+    private val viewPool = RecyclerView.RecycledViewPool()
+
     override fun getItemCount(): Int = list.size
+
+    fun setupNewList(list: List<CompanyDTO>) {
+        this.list = list
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_main_adapter, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(itemView).apply { cardRecycler.setRecycledViewPool(viewPool) }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,7 +42,7 @@ class MainAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val title: TextView = itemView.findViewById(R.id.title)
-        private val cardRecycler: RecyclerView = itemView.findViewById(R.id.card_recycler)
+        val cardRecycler: RecyclerView = itemView.findViewById(R.id.card_recycler)
         private lateinit var layoutManager: LinearLayoutManager
         private var index = -1
         private var offset = -1
@@ -47,8 +54,7 @@ class MainAdapter(
             cardRecycler.adapter = AlphaInAnimationAdapter(
                 CardAdapter(
                     companyDTO.giftCards.orEmpty().filterNotNull(),
-                    navigateInterface
-                )
+                    navigateInterface)
             )
         }
 

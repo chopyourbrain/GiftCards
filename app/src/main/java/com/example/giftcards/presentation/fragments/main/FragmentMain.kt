@@ -49,26 +49,27 @@ class FragmentMain : DaggerFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        recyclerViewLayoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recycler.apply {
+            layoutManager = recyclerViewLayoutManager
+            adapter =
+                context?.let { it1 ->
+                    MainAdapter(
+                        listOf(),
+                        it1,
+                        this@FragmentMain
+                    )
+                }
+            itemAnimator = FadeInDownAnimator()
+        }
         viewModel.list.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Outcome.Progress -> swipe_to_refresh.isRefreshing =
                     true
                 is Outcome.Success -> {
                     hideProgressDialog()
-                    recyclerViewLayoutManager =
-                        LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                    recycler.apply {
-                        layoutManager = recyclerViewLayoutManager
-                        adapter =
-                            context?.let { it1 ->
-                                MainAdapter(
-                                    it.data.filterNotNull(),
-                                    it1,
-                                    this@FragmentMain
-                                )
-                            }
-                        itemAnimator = FadeInDownAnimator()
-                    }
+                    (recycler.adapter as MainAdapter).setupNewList(it.data.filterNotNull())
                     swipe_to_refresh.isRefreshing = false
                 }
                 is Outcome.Failure -> {

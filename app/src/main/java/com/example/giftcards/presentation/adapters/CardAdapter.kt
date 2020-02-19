@@ -12,7 +12,10 @@ import com.example.core_utils.util.extensions.setImageFromUrl
 import com.example.giftcards.R
 import com.example.giftcards.presentation.fragments.main.NavigateInterface
 
-class CardAdapter(private val list: List<CardDTO>, private val navigateInterface: NavigateInterface) :
+class CardAdapter(
+    private val list: List<CardDTO>,
+    private val navigateInterface: NavigateInterface
+) :
     RecyclerView.Adapter<CardAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = list.size
