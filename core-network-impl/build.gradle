@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
 
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -51,8 +51,7 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:${versions.daggerVersion}"
 
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-scalars:${versions.retrofitVersion}"
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.0.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.8.1'
 }

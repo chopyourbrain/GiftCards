@@ -1,6 +1,5 @@
 package com.example.giftcards.presentation.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 
 class MainAdapter(
     private var list: List<CompanyDTO>,
-    val context: Context,
     private val navigateInterface: NavigateInterface
 ) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
@@ -49,7 +47,7 @@ class MainAdapter(
 
         fun bind(companyDTO: CompanyDTO) {
             title.text = companyDTO.title
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
             cardRecycler.layoutManager = layoutManager
             cardRecycler.adapter = AlphaInAnimationAdapter(
                 CardAdapter(

@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.core_utils.domain.model.CompanyDTO
-import io.reactivex.Single
 
 @Dao
 interface CompanyDao {
@@ -16,5 +15,5 @@ interface CompanyDao {
     fun deleteCompany()
 
     @Query("SELECT * from company_table")
-    fun getCompany(): Single<List<CompanyDTO>>
+    fun getCompany(): List<CompanyDTO>
 }
