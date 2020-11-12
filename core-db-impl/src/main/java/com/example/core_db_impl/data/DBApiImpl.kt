@@ -2,7 +2,6 @@ package com.example.core_db_impl.data
 
 import com.example.core_db_api.data.DBApi
 import com.example.core_utils.domain.model.CompanyDTO
-import io.reactivex.Single
 import javax.inject.Inject
 
 class DBApiImpl @Inject constructor(private val db: AppRoomDB) : DBApi {
@@ -15,6 +14,6 @@ class DBApiImpl @Inject constructor(private val db: AppRoomDB) : DBApi {
         db.companyDao().deleteCompany()
     }
 
-    override fun getCompany(): Single<List<CompanyDTO>> = db.companyDao().getCompany()
+    override fun getCompany(): List<CompanyDTO> = db.companyDao().getCompany()
 
 }
