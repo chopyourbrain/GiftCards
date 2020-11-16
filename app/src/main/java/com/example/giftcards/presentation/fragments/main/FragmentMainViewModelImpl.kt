@@ -5,11 +5,14 @@ import com.example.core_utils.domain.model.CompanyDTO
 import com.example.core_utils.domain.model.Outcome
 import com.example.giftcards.domain.usecase.GetCardsUseCase
 import com.example.giftcards.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FragmentMainViewModelImpl @Inject constructor(private val getCardsUseCase: GetCardsUseCase) :
     BaseViewModel(),
-    FragmentMainViewModel, LifecycleObserver {
+    FragmentMainViewModel {
 
     override val list: MutableLiveData<Outcome<List<CompanyDTO?>>> = MutableLiveData()
 
@@ -18,21 +21,16 @@ class FragmentMainViewModelImpl @Inject constructor(private val getCardsUseCase:
     }
 
     override fun getCardList() {
-        runOnBackgroundThread {
+        viewModelScope.launch {
             list.value = Outcome.loading(true)
             getCardsUseCase.execute(
                 onSuccess = {
-                    list.value = Outcome.success(it)
-                },
-                onError = {
-                    list.value = Outcome.failure(it)
-                })
+                    launch { it.collect { list.value = Outcome.success(it) } }
+                }
+            ) {
+                list.value = Outcome.failure(it)
+            }
         }
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
-        stopBackgroundThread()
     }
 
 }

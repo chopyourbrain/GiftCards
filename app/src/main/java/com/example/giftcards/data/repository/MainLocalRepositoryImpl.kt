@@ -9,13 +9,10 @@ import javax.inject.Singleton
 @Singleton
 class MainLocalRepositoryImpl @Inject constructor(private val dbApi: DBApi) : MainLocalRepository {
 
-    fun saveCompany(list: List<CompanyDTO>) {
-        Thread {
-            dbApi.deleteCompany()
-            dbApi.insertCompany(list)
-        }.start()
+    suspend fun saveCompany(list: List<CompanyDTO>) {
+        dbApi.replaceCompany(list)
     }
 
-    override fun getLocalCardList() = dbApi.getCompany()
+    override suspend fun getLocalCardList() = dbApi.getCompany()
 
 }
