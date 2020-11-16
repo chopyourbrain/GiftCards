@@ -1,14 +1,17 @@
 package com.example.giftcards.presentation.fragments.main
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.example.core_utils.domain.model.CompanyDTO
 import com.example.core_utils.domain.model.Outcome
 import com.example.giftcards.domain.usecase.GetCardsUseCase
+import com.example.giftcards.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FragmentMainViewModelImpl @Inject constructor(private val getCardsUseCase: GetCardsUseCase) :
-    ViewModel(),
+    BaseViewModel(),
     FragmentMainViewModel {
 
     override val list: MutableLiveData<Outcome<List<CompanyDTO?>>> = MutableLiveData()
@@ -18,13 +21,16 @@ class FragmentMainViewModelImpl @Inject constructor(private val getCardsUseCase:
     }
 
     override fun getCardList() {
-        list.postValue(Outcome.loading(true))
-        getCardsUseCase.execute(
-            onSuccess = {
-                list.postValue(Outcome.success(it))
-            },
-            onError = {
-                list.postValue(Outcome.failure(it))
-            })
+        viewModelScope.launch {
+            list.value = Outcome.loading(true)
+            getCardsUseCase.execute(
+                onSuccess = {
+                    launch { it.collect { list.value = Outcome.success(it) } }
+                }
+            ) {
+                list.value = Outcome.failure(it)
+            }
+        }
     }
+
 }

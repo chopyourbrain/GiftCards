@@ -57,7 +57,6 @@ class FragmentMain : DaggerFragment(),
                 context?.let { it1 ->
                     MainAdapter(
                         listOf(),
-                        it1,
                         this@FragmentMain
                     )
                 }

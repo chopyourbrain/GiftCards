@@ -2,19 +2,22 @@ package com.example.core_db_impl.data
 
 import com.example.core_db_api.data.DBApi
 import com.example.core_utils.domain.model.CompanyDTO
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class DBApiImpl @Inject constructor(private val db: AppRoomDB) : DBApi {
+    override suspend fun replaceCompany(companies: List<CompanyDTO>) {
+        db.companyDao().replaceCompany(companies)
+    }
 
-    override fun insertCompany(companies: List<CompanyDTO>) {
+    override suspend fun insertCompany(companies: List<CompanyDTO>) {
         db.companyDao().insertCompany(companies)
     }
 
-    override fun deleteCompany() {
+    override suspend fun deleteCompany() {
         db.companyDao().deleteCompany()
     }
 
-    override fun getCompany(): Single<List<CompanyDTO>> = db.companyDao().getCompany()
+    override suspend fun getCompany(): Flow<List<CompanyDTO>> = db.companyDao().getCompany()
 
 }

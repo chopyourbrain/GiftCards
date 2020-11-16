@@ -1,8 +1,8 @@
 package com.example.core_network_api.data
 
 import com.example.core_utils.domain.model.MainDTO
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
 interface HttpClientApi {
-    fun getCards(): Single<MainDTO?>
+    suspend fun getCards(): Flow<MainDTO>
 }

@@ -1,22 +1,19 @@
 package com.example.giftcards.domain.usecase.base
 
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+abstract class UseCase<T> {
 
-abstract class UseCase {
+    internal abstract suspend fun buildUseCaseSingle(): T
 
-    protected var lastDisposable: Disposable? = null
-    protected val compositeDisposable = CompositeDisposable()
-
-    fun disposeLast() {
-        lastDisposable?.let {
-            if (!it.isDisposed) {
-                it.dispose()
-            }
+    suspend fun execute(
+        onSuccess: (t: T) -> Unit,
+        onError: (t: Throwable) -> Unit
+    ) {
+        runCatching {
+            buildUseCaseSingle()
+        }.onFailure {
+            onError.invoke(it)
+        }.onSuccess {
+            onSuccess.invoke(it)
         }
-    }
-
-    fun dispose() {
-        compositeDisposable.clear()
     }
 }

@@ -1,8 +1,8 @@
 package com.example.giftcards.domain.repository
 
 import com.example.core_utils.domain.model.CompanyDTO
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
 interface MainLocalRepository {
-    fun getLocalCardList(): Single<List<CompanyDTO>>
+    suspend fun getLocalCardList(): Flow<List<CompanyDTO>>
 }

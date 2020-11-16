@@ -1,10 +1,11 @@
 package com.example.core_db_api.data
 
 import com.example.core_utils.domain.model.CompanyDTO
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
 interface DBApi {
-    fun insertCompany(companies: List<CompanyDTO>)
-    fun deleteCompany()
-    fun getCompany(): Single<List<CompanyDTO>>
+    suspend fun replaceCompany(companies: List<CompanyDTO>)
+    suspend fun insertCompany(companies: List<CompanyDTO>)
+    suspend fun deleteCompany()
+    suspend fun getCompany(): Flow<List<CompanyDTO>>
 }
